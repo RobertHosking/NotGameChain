@@ -9,10 +9,16 @@ then
   virtualenv -p python3.5 venv
 fi
 
+if [ ! -d ../neo-python ]
+then 
+    git clone ../https://github.com/CityOfZion/neo-python.git
+fi
+
 . venv/bin/activate
 
 #Packages needed by package manager
-sudo apt-get install python3-dev
+# python3.5-dev may not be found if running ubuntu but may be needed for other debian distros
+sudo apt-get install libleveldb-dev python3-pip libssl-dev 
 
 
 #Packages needed by python
