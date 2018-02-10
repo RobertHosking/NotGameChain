@@ -28,3 +28,6 @@ sudo apt-get install libleveldb-dev python3-pip libssl-dev python3.5-dev
 #Packages needed by python
 pip install -r ../neo-python/requirements.txt
 pip install -e ../neo-python
+
+#Chain sync
+python ../neo-python/bootstrap.py
