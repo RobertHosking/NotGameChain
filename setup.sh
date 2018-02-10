@@ -30,4 +30,6 @@ pip install -r ../neo-python/requirements.txt
 pip install -e ../neo-python
 
 #Chain sync
-python ../neo-python/bootstrap.py
+cd ../neo-python
+python bootstrap.py
+cd ../NotGameChain
