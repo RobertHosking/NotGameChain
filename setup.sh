@@ -3,6 +3,8 @@
 # This file is all the requirements needed to run the app
 # Add packages here as you install to do development
 
+sudo apt install python-pip
+sudo pip install virtualenv
 
 if [ ! -d venv ]
 then
