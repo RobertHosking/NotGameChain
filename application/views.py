@@ -1,13 +1,14 @@
 from flask import render_template, request, redirect, url_for
-from model import SQLDatabase
-from log_manager import EmailLogManager
+from application.model import SQLDatabase
+from application.log_manager import EmailLogManager
 from flask_mail import *
 from flask_login import LoginManager, login_user, login_required, logout_user
 from application.forms import LoginForm
 from application import app
 import logging, json, xmltodict
 from datetime import date
-from user import User
+from application.user import User
+
 
 # Email Management
 app.config.update(
@@ -41,7 +42,7 @@ def login():
         password = request.form['password']
 
         # Verify Credentials
-        q = "SELECT * FROM user_account_info WHERE email='{0}' AND password='{1}'".format(email, password)
+        q = "SELECT * FROM users WHERE email='{0}' AND password='{1}'".format(email, password)
         results = database.query(q)
 
         if results is not None and len(results) != 0:
@@ -49,17 +50,18 @@ def login():
             login_user(usr)
             return redirect(url_for("user_dashboard", user=results[0]['UID']))
         else:
-            return render_template("login.html", title="Home | Organizer", active="home", loginFailed=True)
+            return render_template("login.html", title="Login | GameChain", active="home", loginFailed=True)
 
     else:
-        q = "SELECT * FROM user_account_info"
+        q = "SELECT * FROM users"
         results = database.query(q)
         invalidEmails = []
         if results is not None:
             for user_info in results:
                 invalidEmails.append(user_info['email'])
 
-        return render_template("login.html", title="Home | Organizer", active="home", loginFailed=False, invalidEmails=invalidEmails)
+        return render_template("login.html", title="Login | GameChain", active="home", loginFailed=False, invalidEmails=invalidEmails)
+
 
 @app.route("/create_account", methods=["POST"])
 def create_account():
@@ -68,23 +70,21 @@ def create_account():
     password = request.form['pwd']
     firstname = request.form['first_name']
     lastname = request.form['last_name']
-    university = request.form['university']
-    today_date = date.today()
+    firm_name = request.form['firm_name']
 
-    q = "INSERT INTO user_account_info(" \
-        "firstname, lastname, password," \
-        "email, avatar, date_registered," \
-        "university) VALUES ('{0}', '{1}', '{2}', " \
-        "'{3}', '{4}', '{5}', '{6}');".format(
-        firstname, lastname, password, email, 0,
-        str(today_date), university
+    q = "INSERT INTO users(" \
+        "password, first_name, last_name," \
+        "email, account_confirmed, firm_name" \
+        "VALUES ('{0}', '{1}', '{2}', " \
+        "'{3}', '{4}');".format(
+        password, firstname, lastname, email, firm_name
     )
 
     print(database.insert(q))
 
     bSent = False
     try:
-        msg = Message("Assignment Organizer: E-mail Confirmation",
+        msg = Message("GameChain: E-mail Confirmation",
                       sender="cienfuegosjdevelop@gmail.com",
                       recipients=[email])
         msg.html = render_template("confirmation_email.html", firstname=firstname)

@@ -35,4 +35,6 @@ class EmailLogManager:
         self.__email_logger.addHandler(self.__email_handler)
 
     def getEmailLogger(self):
+
         return self.__email_logger
+
