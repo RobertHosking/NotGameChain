@@ -49,6 +49,7 @@ python bootstrap.py
 cd ../
 fi
 
+
 pip install flask
 pip install flask-login
 pip install flask-mail
