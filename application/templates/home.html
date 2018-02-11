@@ -1,0 +1,223 @@
+{% extends 'user_layout.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='node_modules/quill/dist/quill.snow.css')}}"/>
+<link rel="stylesheet" href="{{url_for( 'static', filename='bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" />
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{url_for( 'static', filename='js/home.js') }}"></script>
+    <script type="text/javascript" src="{{url_for( 'static', filename='bower_components/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for( 'static', filename='bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for( 'static', filename='node_modules/quill/dist/quill.min.js') }}"></script>
+{% endblock %}
+
+{% block panel_body %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="well" style="background: #ffffff">
+                <h2>Personal Assignments</h2>
+                <table class="table table-hover" id="personal_table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pa in personal_assignments %}
+                        <tr id="personal_{{pa['PAID']}}">
+                            <td>{{ pa['title'] }}</td>
+                            <td>{{ pa['due_date'] }}</td>
+                            <td>{{ pa['priority'] }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr id="personal_new">
+                            <td><span class="glyphicon glyphicon-plus"></span> Add new assignment...</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Completed Personal Assignments</h2>
+                <table class="table table-hover" id="personal_table_completed">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Completed Date</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pa in personal_assignments_completed %}
+                        <tr id="completed_personal_{{pa['PAID']}}">
+                            <td>{{ pa['title'] }}</td>
+                            <td>{{ pa['due_date'] }}</td>
+                            <td>{{ pa['priority'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="well" style="background: #ffffff">
+                <h2>Team Assignments</h2>
+                <table class="table table-hover" id="team_table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ta in team_assignments %}
+                        <tr id="team_{{ta['TAID']}}">
+                            <td>{{ ta['title'] }}</td>
+                            <td>{{ ta['due_date']}}</td>
+                            <td>{{ ta['priority']}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr id="team_new">
+                            <td><span class="glyphicon glyphicon-plus"></span> Add new assignment...</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Completed Team Assignments</h2>
+                <table class="table table-hover" id="completed_team_table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ta in team_assignments %}
+                        <tr id="completed_team_{{ta['TAID']}}">
+                            <td>{{ ta['title'] }}</td>
+                            <td>{{ ta['due_date']}}</td>
+                            <td>{{ ta['priority']}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="add_personal_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Personal Assignment</h4>
+                </div>
+                <div class="modal-body">
+					<form>
+  						<div class="form-group">
+    						<label for="p_title">Title</label>
+    						<input  class="form-control" id="p_title">
+  						</div>
+  						<div class="form-group">
+    						<label for="p_description">Description</label>
+    						<input class="form-control" id="p_description">
+  						</div>
+                        <div class="form-group">
+                            <label for="p_due_date">Due Date</label>
+                            <div class='input-group date' id='p_due_date_calendar'>
+                                <input type='text' class="form-control" id="p_due_date">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="p_notes">Notes</label>
+                            <div id="p_notes"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p_assumptions">Assumptions</label>
+                            <div id="p_assumptions"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p_constraints">Constraints</label>
+                            <div id="p_constraints"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p_priority">Priority</label>
+                            <select class="form-control" id="p_priority">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+  						<button type="submit" class="btn btn-default" id="pers_submit">Save</button>
+					</form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add_team_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Team Assignment</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="t_title">Title</label>
+                            <input class="form-control" id="t_title">
+                        </div>
+                        <div class="form-group">
+                            <label for="t_description">Description</label>
+                            <input class="form-control" id="t_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="t_due_date">Due Date</label>
+                            <div class="input-group date" id="t_due_date_calendar">
+                                <input type="text" class="form-control" id="t_due_date">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="t_notes">Notes</label>
+                            <div id="t_notes"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="t_assumptions">Assumptions</label>
+                            <div id="t_assumptions"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="t_constraints">Constraints</label>
+                            <div id="t_constraints"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="t_priority">Priority</label>
+                            <select class="form-control" id="t_priority">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-default" id="team_submit">Save</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

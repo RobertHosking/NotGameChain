@@ -1,0 +1,27 @@
+#usernameFormGroup {
+    padding-top: 2%;
+}
+
+#passwordFormGroup {
+    padding-top: 2%;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+.panel-body {
+    background-image:url('../images/login.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 125px);
+}
+
+#btn_login {
+    margin-top: 2%;
+}
+
+.jumbotron {
+    text-align: center;
+}
