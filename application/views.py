@@ -1,5 +1,5 @@
 from flask import render_template
-from forms import LoginForm
+from application.forms import LoginForm
 from application import app
 
 
@@ -13,5 +13,4 @@ def index():
 def login():
     form = LoginForm()
     return render_template("login.html",
-                            title = "Sign In"
-                            form = form)
+                            title = "Sign In")
