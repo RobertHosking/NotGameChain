@@ -108,21 +108,25 @@ def email_confirmation(successful):
 @app.route("/home/<user>", methods=["GET","POST"])
 @login_required
 def user_dashboard(user):
-    if request.method == "POST":
-        obj = []
-        obj['name'] = request.form['p_name']
-        obj['symbol'] = request.form['p_symbol']
-        obj['total'] = request.form['p_total_supply']
-        obj['initial'] = request.form['p_initial_supply']
-        filename="{0}_{1}".format(obj['name'], obj['symbol'])
-        file_content = json.dump(obj)
-        with open(filename, 'w') as f:
-            f.write(file_content)
-        return render_template("home.html", igcs=[],user=user)
-    else:
-        query = "SELECT * FROM IGCS where user={0};".format(user)
-        igcs = database.query(query)
-        return render_template("home.html", igcs=igcs,user=user)
+
+    query = "SELECT * FROM IGCS where user={0};".format(user)
+    igcs = database.query(query)
+    return render_template("home.html", igcs=igcs,user=user)
+
+
+@app.route("/home/submission", methods=["POST"])
+@login_required
+def submission(user):
+    obj = []
+    obj['name'] = request.form['p_name']
+    obj['symbol'] = request.form['p_symbol']
+    obj['total'] = request.form['p_total_supply']
+    obj['initial'] = request.form['p_initial_supply']
+    filename = "{0}_{1}".format(obj['name'], obj['symbol'])
+    file_content = json.dump(obj)
+    with open(filename, 'w') as f:
+        f.write(file_content)
+    return render_template("home.html", igcs=[], user=user)
 
 @login_manager.user_loader
 def load_user(userid):
