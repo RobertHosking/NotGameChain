@@ -1,13 +1,13 @@
 from flask import render_template, request, redirect, url_for
-from model import SQLDatabase
-from log_manager import EmailLogManager
+from application.model import SQLDatabase
+from application.log_manager import EmailLogManager
 from flask_mail import *
 from flask_login import LoginManager, login_user, login_required, logout_user
 from application.forms import LoginForm
 from application import app
 import logging, json, xmltodict
 from datetime import date
-from user import User
+from application.user import User
 
 # Email Management
 app.config.update(
@@ -41,7 +41,7 @@ def login():
         password = request.form['password']
 
         # Verify Credentials
-        q = "SELECT * FROM user_account_info WHERE email='{0}' AND password='{1}'".format(email, password)
+        q = "SELECT * FROM users WHERE email='{0}' AND password='{1}'".format(email, password)
         results = database.query(q)
 
         if results is not None and len(results) != 0:
@@ -49,7 +49,7 @@ def login():
             login_user(usr)
             return redirect(url_for("user_dashboard", user=results[0]['UID']))
         else:
-            return render_template("login.html", title="Home | Organizer", active="home", loginFailed=True)
+            return render_template("login.html", title="Login | GameChain", active="home", loginFailed=True)
 
     else:
         q = "SELECT * FROM user_account_info"
@@ -59,7 +59,8 @@ def login():
             for user_info in results:
                 invalidEmails.append(user_info['email'])
 
-        return render_template("login.html", title="Home | Organizer", active="home", loginFailed=False, invalidEmails=invalidEmails)
+        return render_template("login.html", title="Login | GameChain", active="home", loginFailed=False, invalidEmails=invalidEmails)
+
 
 @app.route("/create_account", methods=["POST"])
 def create_account():
