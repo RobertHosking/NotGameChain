@@ -44,5 +44,5 @@ if [ ! -d neo-python/Chain/SRC* ]
 then
 cd neo-python
 python bootstrap.py
-cd NotGameChain
+cd ../
 fi
