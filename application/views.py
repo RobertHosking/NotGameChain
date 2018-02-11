@@ -109,7 +109,6 @@ def email_confirmation(successful):
 @login_required
 def user_dashboard(user):
     if request.method == "POST":
-        print("Javier")
         obj = []
         obj['name'] = request.form['p_name']
         obj['symbol'] = request.form['p_symbol']
