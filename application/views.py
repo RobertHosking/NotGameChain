@@ -118,7 +118,7 @@ def user_dashboard(user):
         file_content = json.dump(obj)
         with open(filename, 'w') as f:
             f.write(file_content)
-        return redirect(url_for("user_dashboard",user=user))
+        return render_template("home.html", igcs=[],user=user)
         
     query = "SELECT * FROM IGCS where user={0};".format(user)
     igcs = database.query(query)
