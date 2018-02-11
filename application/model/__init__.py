@@ -8,7 +8,7 @@ class SQLDatabase:
         self.loggerManager = DBLoggerManager()
         self.issues_logger = self.loggerManager.getIssuesLogger()
         self.queries_logger = self.loggerManager.getQueriesLogger()
-
+        self.connection = None
         try:
             self.connection = pymysql.connect(
                 host=self.connection_cred['cred']['db_cred']['host'],

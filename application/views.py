@@ -72,12 +72,14 @@ def create_account():
     lastname = request.form['last_name']
     firm_name = request.form['firm_name']
 
+    """
+    """
     q = "INSERT INTO users(" \
         "password, first_name, last_name," \
-        "email, account_confirmed, firm_name" \
+        "email, account_confirmed, firm_name)" \
         "VALUES ('{0}', '{1}', '{2}', " \
-        "'{3}', '{4}');".format(
-        password, firstname, lastname, email, firm_name
+        "'{3}', '{4}', '{5}');".format(
+        password, firstname, lastname, email, 0, firm_name
     )
 
     print(database.insert(q))
