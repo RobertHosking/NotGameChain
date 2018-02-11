@@ -1,4 +1,5 @@
 import pymysql.cursors, logging, datetime
+from log_manager import DBLoggerManager
 
 class SQLDatabase:
 

@@ -1,0 +1,10 @@
+<cred>
+    <db_cred  version="0.1">
+        <host>173.255.232.56</host>
+        <user>root</user>
+        <password>notgamechain</password>
+        <db>gamechain</db>
+        <charset>utf8mb4</charset>
+        <cursorclass>pymysql.cursors.DictCursor</cursorclass>
+    </db_cred>
+</cred>
