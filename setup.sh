@@ -29,7 +29,19 @@ sudo apt-get install libleveldb-dev python3-pip libssl-dev python3.5-dev
 pip install -r ../neo-python/requirements.txt
 pip install -e ../neo-python
 pip install flask
-pip install wtforms
+pip install flask-login
+pip install flask-mail
+pip install flask-sqlalchemy
+pip install sqlalchemy-migrate
+pip install whooshalchemy
+pip install flask-wtf
+pip install flask-babel
+pip install guess_language
+pip install flipflop
+pip install coverage
+pip install bcrypt
+
+
 #Chain sync
 cd ../neo-python
 python bootstrap.py
