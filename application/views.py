@@ -72,8 +72,6 @@ def create_account():
     lastname = request.form['last_name']
     firm_name = request.form['firm_name']
 
-    """
-    """
     q = "INSERT INTO users(" \
         "password, first_name, last_name," \
         "email, account_confirmed, firm_name)" \
@@ -106,6 +104,12 @@ def create_account():
 def email_confirmation(successful):
     return render_template("email_confirmation.html", successful=successful)
 
+
+@app.route("/home/<user>", methods=["GET"])
+@login_required
+def user_dashboard(user):
+    query = "SELECT * FROM IGCS where user={0};".format(user)
+    return render_template("home.html", igcs=igcs)
 
 @login_manager.user_loader
 def load_user(userid):
