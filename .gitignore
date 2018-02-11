@@ -5,3 +5,4 @@ neo-ico-template/*
 sc_comp/*
 wallets/*
 .idea/*
+*.pyc
