@@ -1,6 +1,6 @@
 <cred>
     <db_cred  version="0.1">
-        <host>173.255.232.56</host>
+        <host>127.0.0.1</host>
         <user>root</user>
         <password>notgamechain</password>
         <db>gamechain</db>
