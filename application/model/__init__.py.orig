@@ -1,6 +1,7 @@
 import pymysql.cursors, logging, datetime
 from application.log_manager import DBLoggerManager
 
+
 class SQLDatabase:
 
     def __init__(self, conn_cred):
@@ -55,4 +56,6 @@ class SQLDatabase:
             )
 
     def __del__(self):
+
         self.connection.close()
+
