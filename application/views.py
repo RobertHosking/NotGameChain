@@ -105,7 +105,7 @@ def email_confirmation(successful):
     return render_template("email_confirmation.html", successful=successful)
 
 
-@app.route("/home/<user>", methods=["GET","POST"])
+@app.route("/home/<user>", methods=["GET"])
 @login_required
 def user_dashboard(user):
 
@@ -114,7 +114,7 @@ def user_dashboard(user):
     return render_template("home.html", igcs=igcs,user=user)
 
 
-@app.route("/home/submission", methods=["POST"])
+@app.route("/home/submission/<user>", methods=["POST"])
 @login_required
 def submission(user):
     obj = []
