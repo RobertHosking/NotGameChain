@@ -105,12 +105,26 @@ def email_confirmation(successful):
     return render_template("email_confirmation.html", successful=successful)
 
 
-@app.route("/home/<user>", methods=["GET"])
+@app.route("/home/<user>", methods=["GET","POST"])
 @login_required
 def user_dashboard(user):
+    if request.method == "POST":
+        obj = []
+        obj['name'] = request.form['p_name']
+        obj['symbol'] = request.form['p_symbol']
+        obj['total'] = request.form['p_total_supply']
+        obj['initial'] = request.form['p_initial_supply']
+        filtero = "javiey.json"
+        filename = rs.SaveFileName("Save JSON file as", filtero)
+        if filename:
+    # Writing JSON data
+            with open(filename, 'w') as f:
+                print("/////////////this ran bi-")
+                json.dump(obj, f) 
+        
     query = "SELECT * FROM IGCS where user={0};".format(user)
     igcs = database.query(query)
-    return render_template("home.html", igcs=igcs)
+    return render_template("home.html", igcs=igcs,user=user)
 
 @login_manager.user_loader
 def load_user(userid):

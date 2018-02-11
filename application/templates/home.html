@@ -89,7 +89,7 @@
                         </div>
 
                     
-  						<button type="submit" class="btn btn-default" id="pers_submit">Save</button>
+  						<button action="{{ url_for('user_dashboard',user=user) }}" method="POST" type="submit" class="btn btn-default" id="pers_submit">Save</button>
 					</form>
                 </div>
                 <div class="modal-footer"></div>
