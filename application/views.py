@@ -114,13 +114,11 @@ def user_dashboard(user):
         obj['symbol'] = request.form['p_symbol']
         obj['total'] = request.form['p_total_supply']
         obj['initial'] = request.form['p_initial_supply']
-        filtero = "javiey.json"
-        filename = rs.SaveFileName("Save JSON file as", filtero)
-        if filename:
-    # Writing JSON data
-            with open(filename, 'w') as f:
-                print("/////////////this ran bi-")
-                json.dump(obj, f) 
+        filename="{0}_{1}".format(obj['name'], obj['symbol'])
+        file_content = json.dump(obj)
+        with open(filename, 'w') as f:
+            f.write(file_content)
+        return redirect(url_for("user_dashboard",user=user))
         
     query = "SELECT * FROM IGCS where user={0};".format(user)
     igcs = database.query(query)
