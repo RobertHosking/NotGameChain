@@ -14,27 +14,36 @@
 
 {% block panel_body %}
     <div class="row">
-        <div class="col-lg-6">
-            <div class="well" style="background: #ffffff">
-                <h2>Your Coins</h2>
-                <table class="table table-hover" id="personal_table">
+        <div class="col-lg-12">
+            <div class="well" style="background: #ffffff;text-align:center;">
+                <h2>Outstanding IGCS</h2>
+                <table class="table table-hover" id="igc_tokens">
                     <thead>
                         <tr>
-                            <th>Symbol</th>
                             <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Decimals</th>
+                            <th>Owner</th>
                             <th>Total Supply</th>
+                            <th>Initial Amount</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for token in firm_tokens %}
-                        <tr id="personal_{{pa['PAID']}}">
-                            <td>{{ token['symbol'] }}</td>
-                            <td>{{ token['name'] }}</td>
-                            <td>{{ token['total supply'] }}</td>
+                        {% for igc in igcs %}
+                        <tr id="{{ igc['id'] }}">
+                            <td>{{ igc['name'] }}</td>
+                            <td>{{ igc['symbol'] }}</td>
+                            <td>{{ igc['decimals'] }}</td>
+                            <td>{{ igc['owner'] }}</td>
+                            <td>{{ igc['total_supply'] }}</td>
+                            <td>{{ igc['initial_amount'] }}</td>
                         </tr>
                         {% endfor %}
-                        <tr id="personal_new">
-                            <td><span class="glyphicon glyphicon-plus"></span> Add New Token</td>
+                        <tr id="new_igc">
+                            <td><span class="glyphicon glyphicon-plus"></span> Add New IGC</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -46,12 +55,12 @@
         
     </div>
 
-    <div id="add_personal_modal" class="modal fade" role="dialog">
+    <div id="add_new_modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Create Token</h4>
+                    <h4 class="modal-title">Create IGC</h4>
                 </div>
                 <div class="modal-body">
 					<form>
@@ -66,17 +75,17 @@
                     
                         <div class="form-group">
                             <label for="p_decimals">Decimals</label>
-                            <div id="p_decimals"></div>
+                            <input class="form-control" id="p_decimals">
                         </div>
 
                         <div class="form-group">
                             <label for="p_total_supply">Total Supply</label>
-                            <div id="p_total_supply"></div>
+                            <input class="form-control" id="p_total_supply">
                         </div>
 
                         <div class="form-group">
-                            <label for="p_initial_ammount">Initial Ammount</label>
-                            <div id="p_initial_ammount"></div>
+                            <label for="p_initial_amount">Initial Amount</label>
+                            <input class="form-control" id="p_initial_amount">
                         </div>
 
                     
@@ -88,6 +97,13 @@
         </div>
     </div>
 
+<script>
+$(document).ready(function(){
+    $("#new_igc").click(function(){
+        $("#add_new_modal").modal();
+    });
+});
+</script>
     
 
 {% endblock %}

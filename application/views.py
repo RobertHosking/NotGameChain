@@ -46,9 +46,9 @@ def login():
         results = database.query(q)
 
         if results is not None and len(results) != 0:
-            usr = User(results[0]['UID'], results[0]['email'], results[0]['password'])
+            usr = User(results[0]['id'], results[0]['email'], results[0]['password'])
             login_user(usr)
-            return redirect(url_for("user_dashboard", user=results[0]['UID']))
+            return redirect(url_for("user_dashboard", user=results[0]['id']))
         else:
             return render_template("login.html", title="Login | GameChain", active="home", loginFailed=True)
 
@@ -109,11 +109,12 @@ def email_confirmation(successful):
 @login_required
 def user_dashboard(user):
     query = "SELECT * FROM IGCS where user={0};".format(user)
+    igcs = database.query(query)
     return render_template("home.html", igcs=igcs)
 
 @login_manager.user_loader
 def load_user(userid):
-    q = "SELECT * FROM user_account_info WHERE UID='{0}'".format(userid)
+    q = "SELECT * FROM users WHERE id='{0}'".format(userid)
     results = database.query(q)
     if results is not None:
         return User(userid, results[0]['email'], results[0]['password'])
