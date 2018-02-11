@@ -9,6 +9,7 @@ import logging, json, xmltodict
 from datetime import date
 from application.user import User
 
+
 # Email Management
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
@@ -52,7 +53,7 @@ def login():
             return render_template("login.html", title="Login | GameChain", active="home", loginFailed=True)
 
     else:
-        q = "SELECT * FROM user_account_info"
+        q = "SELECT * FROM users"
         results = database.query(q)
         invalidEmails = []
         if results is not None:
@@ -69,23 +70,21 @@ def create_account():
     password = request.form['pwd']
     firstname = request.form['first_name']
     lastname = request.form['last_name']
-    university = request.form['university']
-    today_date = date.today()
+    firm_name = request.form['firm_name']
 
-    q = "INSERT INTO user_account_info(" \
-        "firstname, lastname, password," \
-        "email, avatar, date_registered," \
-        "university) VALUES ('{0}', '{1}', '{2}', " \
-        "'{3}', '{4}', '{5}', '{6}');".format(
-        firstname, lastname, password, email, 0,
-        str(today_date), university
+    q = "INSERT INTO users(" \
+        "password, first_name, last_name," \
+        "email, account_confirmed, firm_name" \
+        "VALUES ('{0}', '{1}', '{2}', " \
+        "'{3}', '{4}');".format(
+        password, firstname, lastname, email, firm_name
     )
 
     print(database.insert(q))
 
     bSent = False
     try:
-        msg = Message("Assignment Organizer: E-mail Confirmation",
+        msg = Message("GameChain: E-mail Confirmation",
                       sender="cienfuegosjdevelop@gmail.com",
                       recipients=[email])
         msg.html = render_template("confirmation_email.html", firstname=firstname)
