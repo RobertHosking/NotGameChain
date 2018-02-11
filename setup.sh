@@ -36,8 +36,10 @@ sudo apt-key fingerprint 0EBFCD88
 
 
 #Packages needed by python
+
 pip install -r neo-python/requirements.txt
 pip install -e neo-python
+
 
 #Chain sync
 if [ ! -d neo-python/Chain/SRC* ]
@@ -46,3 +48,17 @@ cd neo-python
 python bootstrap.py
 cd ../
 fi
+
+
+pip install flask
+pip install flask-login
+pip install flask-mail
+pip install flask-sqlalchemy
+pip install sqlalchemy-migrate
+pip install whooshalchemy
+pip install flask-wtf
+pip install flask-babel
+pip install guess_language
+pip install flipflop
+pip install coverage
+pip install bcrypt
