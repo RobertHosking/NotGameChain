@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700');
+body{
+    font-family: 'Roboto';
+}
 #usernameFormGroup {
     padding-top: 2%;
 }
@@ -11,7 +15,7 @@
 }
 
 .panel-body {
-    background-image:url('../images/login.jpg');
+    background-image:url('../images/bw-cover.jpg');
     background-repeat:no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,4 +28,32 @@
 
 .jumbotron {
     text-align: center;
+}
+
+h1{
+    font-size: 5em;
+    font-weight: 300;
+}
+h2{
+    font-size: 3em;
+    font-weight: 300;
+}
+
+#motd{
+        margin-top: 10%;
+
+}
+#motd h1, h2, h3{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.navbar-inverse{
+    margin:0;
+}
+@media screen and (min-width: 1200px){
+    #motd h1,h2,h3{
+        text-align: center;
+    }
 }

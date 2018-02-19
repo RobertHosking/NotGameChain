@@ -1,0 +1,19 @@
+Metadata-Version: 1.2
+Name: neo-ico-template
+Version: 0.1.0
+Summary: A Python Template for an NEP5 Token
+Home-page: https://github.com/neonexchange/neo-ico-template
+Author: Thomas Saunders
+Author-email: tom@neonexchange.org
+License: GPL3
+Description-Content-Type: UNKNOWN
+Description: # NotGameChain
+Keywords: NEP5 ICO Token NEO .avm blockchain development dApp
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Requires-Python: >=3.4, <3.6

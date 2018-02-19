@@ -1,0 +1,7 @@
+README.md
+setup.py
+neo_ico_template.egg-info/PKG-INFO
+neo_ico_template.egg-info/SOURCES.txt
+neo_ico_template.egg-info/dependency_links.txt
+neo_ico_template.egg-info/requires.txt
+neo_ico_template.egg-info/top_level.txt
