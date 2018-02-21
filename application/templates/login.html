@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>{{ title }}</title>
+    <title>PAYVR | Monetize Games</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
@@ -20,33 +20,16 @@
     {% endfor %}
 </script>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{ url_for('login') }}">PAYVR</a>
+      <a class="navbar-brand" href="{{ url_for('login') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+    </a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="{{ url_for('login') }}">Home</a></li>
-      <li><a href="#">Coin Generator</a></li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <form class="form-inline" action="{{ url_for('login') }}" method="post">
-
-               <div class="form-group" id="usernameFormGroup">
-                    <input type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-
-                <div class="form-group" id="passwordFormGroup">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-               </div>
-
-                <button type="submit" class="btn btn-default btn-sm" id="btn_login">
-                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
-                </button>
-
-            </form>
-        </li>
+      <li class="active"><a href="#howitworks">How it Works</a></li>
+      <li><a href="#team">Team</a></li>
     </ul>
   </div>
 </nav>
@@ -60,8 +43,8 @@
                 <h3>
                 Login and begin creating better currency with real value.
             </h3>
-            <div id="browse_app">
-  <a target="_blank" class="btn btn-large btn-info" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zIuMnojV8z9rHpkoi0Iwo1_6Eus1X43UiiFUurPGB9PXWg/viewform?usp=sf_link">Get Updates!</a>
+            <div id="call-btn">
+  <a target="_blank" class="btn btn-large" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zIuMnojV8z9rHpkoi0Iwo1_6Eus1X43UiiFUurPGB9PXWg/viewform?usp=sf_link">Get Updates!</a>
 </div>
 
                 <!-- <a data-toggle="modal" data-target="#create_account_modal">Click here to create a new account.</a>
@@ -94,17 +77,46 @@
         
     </div>
     
-    <section>
+    <section id="howitworks">
       <div class="container">
         <div class="row">
             <h2 class="center animated fadeInUp">
                 How it Works
             </h2>
+            as;ldkasdkjfha sdjklfha sdfjah sdfjasd hfalkjsdh fasdjkfh asdjkfha sdjfkha sdfkjlha sdkfjah ds
             
         </div>
       </div>
   </section>
-  
+   <section id="team">
+      <div class="container">
+        <div class="row">
+            <h2 class="center animated fadeInUp">
+                The Team
+            </h2>
+            <br>
+            <div class="col-sm-4">
+                <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/rob.jpg') }}" alt="">
+                <h3>Robert Hosking III</h3>
+                <h5>Co-Founder</h5>
+                <h6>B.A. Computer Science & Computational Mathematics</h6>
+            </div>
+            <div class="col-sm-4">
+                <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/javi.jpg') }}" alt="">
+                <h3>Javier Cienfuegos Jr.</h3>
+                <h5>Co-Founder</h5>
+                <h6>B.A. Computer Science B.A. Mathematics</h6>    
+        </div>
+            <div class="col-sm-4">
+                <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/alex.jpg') }}" alt="">
+                <h3>Alexandrith Sharron</h3>
+                <h5>Co-Founder</h5>
+                <h6>B.A. Computer Science</h6>
+        </div>
+            
+        </div>
+      </div>
+  </section>
 <div id="create_account_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -49,11 +49,52 @@ h2{
 .center{
     text-align: center;
 }
-.navbar-inverse{
+.navbar{
     margin:0;
+    border-radius:0;
+    background-color:#202125;
+    padding:2em;
+}
+#call-btn{
+    text-align:left;
 }
 @media screen and (min-width: 1200px){
     #motd h1,h2,h3{
         text-align: center;
     }
+    #call-btn{
+        text-align: center;
+    }
+}
+.btn{
+    border-radius: 0;
+    background-color: #991223;
+    padding: 1em;
+    margin-top:3em;
+}
+a.btn{
+    color:#fff;
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    text-decoration: none;
+}
+a.btn:hover{
+    color:#ccc;
+}
+.navbar a{
+    color:#fff;
+    font-family: 'Roboto';
+    font-size: 1.22em;
+}
+nav>li>a:hover{
+    background-color: #202125;
+    color: #000;
+}
+.profile{
+    height: 15em;
+    filter: gray; /* IE5+ */
+      -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome */
+}
+h5, h6{
+    text-align: center;
 }
