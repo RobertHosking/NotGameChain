@@ -35,10 +35,14 @@ h1{
     font-weight: 300;
 }
 h2{
-    font-size: 3em;
-    font-weight: 300;
+    font-size: 5em;
+    font-weight: 100;
+    margin-bottom:1.2em;
 }
-
+#whitepaper{
+    background-color:#d81b60;
+    color: #fff;
+}
 #motd{
         margin-top: 10%;
 
@@ -52,7 +56,7 @@ h2{
 .navbar{
     margin:0;
     border-radius:0;
-    background-color:#202125;
+    background-color:#fff;
     padding:2em;
 }
 #call-btn{
@@ -68,10 +72,11 @@ h2{
 }
 .btn{
     border-radius: 0;
-    background-color: #991223;
+    background-color: #d81b60;
     padding: 1em;
     margin-top:3em;
 }
+
 a.btn{
     color:#fff;
     font-family: 'Roboto';
@@ -79,10 +84,13 @@ a.btn{
     text-decoration: none;
 }
 a.btn:hover{
-    color:#ccc;
+    color:#000;
+}
+.navbar-brand{
+    padding:0;
 }
 .navbar a{
-    color:#fff;
+    color:#202125;
     font-family: 'Roboto';
     font-size: 1.22em;
 }
@@ -97,4 +105,147 @@ nav>li>a:hover{
 }
 h5, h6{
     text-align: center;
+}
+
+section{
+    padding:1.2em;
+}
+
+.wedge { 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0;
+    border-left: 100vw solid transparent;
+    border-bottom: 9vh solid #FAFAFA;
+}
+#whatitdoes, #howitworks{
+    background-color: #FAFAFA;
+}
+#alt-btn{
+    color:#d81b60;
+    border-radius: 0;
+    background-color: #fff;
+    padding: 1em;
+    margin-top:0;
+    margin-bottom: 1.2em;
+}
+p{
+    text-align: center;
+    font-size:1.25em;
+}
+li{
+    font-size: 1.25em;
+}
+.modal{
+    color:#000;
+}
+.brace {
+  width: auto;
+  min-width: 35px;
+  padding-bottom: 20px;
+  font-size: 2em;
+  line-height: 2em;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 15px 15px;
+  border: none;
+  background-color: transparent;
+  background-image: radial-gradient(circle at 0 0, rgba(255,255,255,0) 14.5px, #000 15.5px, #000 19.5px, rgba(255,255,255,0) 20.5px), radial-gradient(circle at 35px 0, rgba(255,255,255,0) 14.5px, #000 15.5px, #000 19.5px, rgba(255,255,255,0) 20.5px);
+  background-size: 35px 20px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  text-transform: lowercase;
+  font-style: italic;
+  color: #000;
+  -webkit-filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+          filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+}
+.brace:before {
+  width: 50%;
+  border-top: 5px solid #000;
+  border-left: 1px solid transparent; /* play with this until you like the look of it */
+  border-top-left-radius: 20% 30px;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: -5px;
+}
+.brace:after {
+  width: 50%;
+  border-top: 5px solid #000;
+  border-right: 1px solid transparent; /* play with this until you like the look of it */
+  border-top-right-radius: 20% 30px;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: -15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: -5px;
+}
+
+
+footer.nb-footer {
+background: #222;
+border-top: 4px solid #d81b60; }
+footer.nb-footer .about {
+margin: 0 auto;
+margin-top: 40px;
+max-width: 1170px;
+text-align: center; }
+footer.nb-footer .about p {
+font-size: 13px;
+color: #999;
+margin-top: 30px; }
+footer.nb-footer .about .social-media {
+margin-top: 15px; }
+footer.nb-footer .about .social-media ul li a {
+display: inline-block;
+width: 45px;
+height: 45px;
+line-height: 45px;
+border-radius: 50%;
+font-size: 16px;
+color: #d81b60;
+border: 1px solid rgba(255, 255, 255, 0.3); }
+footer.nb-footer .about .social-media ul li a:hover {
+background: #d81b60;
+color: #fff;
+border-color: #d81b60; }
+footer.nb-footer .footer-info-single {
+margin-top: 30px; }
+footer.nb-footer .footer-info-single .title {
+color: #aaa;
+text-transform: uppercase;
+font-size: 16px;
+border-left: 4px solid #d81b60;
+padding-left: 5px; }
+footer.nb-footer .footer-info-single ul li a {
+display: block;
+color: #aaa;
+padding: 2px 0; }
+footer.nb-footer .footer-info-single ul li a:hover {
+color: #d81b60; }
+footer.nb-footer .footer-info-single p {
+font-size: 13px;
+line-height: 20px;
+color: #aaa; }
+footer.nb-footer .copyright {
+margin-top: 15px;
+background: #111;
+padding: 7px 0;
+color: #999; }
+footer.nb-footer .copyright p {
+margin: 0;
+padding: 0; }
+
+pre{
+    border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;
 }

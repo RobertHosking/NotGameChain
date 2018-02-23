@@ -2,15 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>PAYVR | Monetize Games</title>
+    <title>Monetize Games</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/small.png') }}">
+	<link href="{{ url_for('static', filename='css/prism.css') }}" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <link rel="stylesheet" href="https://raw.github.com/daneden/animate.css/master/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <script src="{{ url_for('static', filename='js/createAccountValidation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/prism.js') }}"></script>
 </head>
 
 <script>
@@ -28,8 +32,11 @@
     </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+        <li><a href="#whatwedo">What it Does</a></li>
       <li class="active"><a href="#howitworks">How it Works</a></li>
+      <li><a href="#whitepaper">Whitepaper</a></li>
       <li><a href="#team">Team</a></li>
+      
     </ul>
   </div>
 </nav>
@@ -41,7 +48,7 @@
             <div class="pres">
                 <h1>Say Hello to Better Monitization</h1>
                 <h3>
-                Login and begin creating better currency with real value.
+                A platform for building in-game cryptocurrencies.
             </h3>
             <div id="call-btn">
   <a target="_blank" class="btn btn-large" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zIuMnojV8z9rHpkoi0Iwo1_6Eus1X43UiiFUurPGB9PXWg/viewform?usp=sf_link">Get Updates!</a>
@@ -76,18 +83,137 @@
         </div>
         
     </div>
-    
+    <section class='wedge'></section>
+    <section id="whatitdoes">
+      <div class="container">
+        <div class="row">
+            <h2 class="center animated fadeInUp" style="margin-bottom:0;">
+                What it Does
+            </h2>
+            
+            <img width="50%"class="center-block"src="{{ url_for('static', filename='images/11_MONEDA.gif') }}" alt="">
+<hr class="brace">
+<br>
+<br>
+           <div class="row">
+               <div class="col-md-4 text-center">
+                   <img class="center-block" width="200px" src="{{ url_for('static', filename='images/security.png') }}" alt="">
+                    <h3>Eliminates Fraud</h3>
+                    <p>Blockchain makes your currency unhackable and allows easy audits.</p>
+            </div>
+                <div class="col-md-4 text-center">
+                   <img class="center-block" width="200px" src="{{ url_for('static', filename='images/scarcity.png') }}" alt="">
+                    <h3>Provides Scarcity</h3>
+                    <p>Fixed supply + increasing demand = higher price.</p>
+            </div>
+                <div class="col-md-4 text-center">
+                   <img class="center-block" width="200px" src="{{ url_for('static', filename='images/stakes.png') }}" alt="">
+                    <h3>Raises the Stakes</h3>
+                    <p>Incentivize behavior with a currency with actual value.</p>
+            </div>
+           </div>
+            
+        </div>
+      </div>
+    </section>
     <section id="howitworks">
       <div class="container">
         <div class="row">
             <h2 class="center animated fadeInUp">
                 How it Works
             </h2>
-            as;ldkasdkjfha sdjklfha sdfjah sdfjasd hfalkjsdh fasdjkfh asdjkfha sdjfkha sdfkjlha sdkfjah ds
+            <div class="row">
+                <div class="col-md-4">
+            <img width="400px" src="{{ url_for('static', filename='images/build.png') }}" alt="">
+
+                </div>
+                <div class="col-md-8">
+                    <h3>Using our coin designer, we will walk you thourgh the creation of your new currency. You'll be able to:</h3>
+                    <ul>
+                        <li>Give it a name</li>
+                        <li>Cap the total supply</li>
+                        <li>Define if/how new tokens are generated</li>
+                        <li>And more...</li>
+                    </ul>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-4">
+            <img width="400px" src="{{ url_for('static', filename='images/api.png') }}" alt="">
+
+                </div>
+                <div class="col-md-8">
+
+                    <h3>We provide an API library in the most popular programming languages for you to implement the currency in your game.</h3>
+                   <!-- HTML generated using hilite.me -->
+<pre><code class="language-python">
+#!/bin/python
+
+import Payvr
+
+wallets = {
+    Bob: '841fd7d47d50406fa1c31558bb',
+    Alice: '56592fb3c396713d10954d62c8465fc4f'
+}
+
+bank = Payvr('my-super secret-API-key')
+bank.give(100, wallets['Bob'])
+
+bob = bank.getUser('841fd7d47d50406fa1c31558bb')
+print(bob.balance())
+> 100
+
+bob.transfer(60, wallets['Alice'])
+print(bob.balance())
+> 40
+    
+</code></pre>
+
+
+                </div>
+            </div>
+            
             
         </div>
       </div>
-  </section>
+    </section>
+     
+     <section id="whitepaper">
+        <div class="container">
+        <h2>Read the Whitepaper</h2>
+         <div id="call-btn">
+  <a id="alt-btn" class="btn btn-large " data-toggle="modal" data-target="#myModal">
+    Download Whitepaper</a>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notice:</h4>
+      </div>
+      <div class="modal-body">
+        <p>The wite paper is currently being drafted. We'll notify you when its been published.</p>
+    </div>
+     <div id="call-btn">
+  <a target="_blank" class="btn btn-large" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zIuMnojV8z9rHpkoi0Iwo1_6Eus1X43UiiFUurPGB9PXWg/viewform?usp=sf_link">Get Updates!</a>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+        </div>
+    </section>
    <section id="team">
       <div class="container">
         <div class="row">
@@ -95,27 +221,30 @@
                 The Team
             </h2>
             <br>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/rob.jpg') }}" alt="">
-                <h3>Robert Hosking III</h3>
+                <h3 class="text-center">Robert Hosking III</h3>
                 <h5>Co-Founder</h5>
                 <h6>B.A. Computer Science & Computational Mathematics</h6>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/javi.jpg') }}" alt="">
-                <h3>Javier Cienfuegos Jr.</h3>
+                <h3 class="text-center">Javier Cienfuegos Jr.</h3>
                 <h5>Co-Founder</h5>
                 <h6>B.A. Computer Science B.A. Mathematics</h6>    
         </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <img class="profile img-circle center-block" src="{{ url_for('static', filename='images/alex.jpg') }}" alt="">
-                <h3>Alexandrith Sharron</h3>
+                <h3 class="text-center">Alexandrith Sharron</h3>
                 <h5>Co-Founder</h5>
                 <h6>B.A. Computer Science</h6>
         </div>
-            
+
+         
         </div>
-      </div>
+    
+</div>
+    
   </section>
 <div id="create_account_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -159,6 +288,108 @@
 
 
 </div>
+ <footer class="nb-footer">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div class="about">
+	<img src="images/logo.png" class="img-responsive center-block" alt="">
+	<p>Payvr is currently exploring the technical and financial feasability of the product. We are pre-seed stage.</p>
+
+	<div class="social-media">
+		<ul class="list-inline">
+			<li><a href="http://www.github.com/payvr" title=""><i class="fa fa-github-alt"></i></a></li>
+		</ul>
+	</div>
+</div>
+</div>
+<!--
+<div class="col-md-3 col-sm-6">
+<div class="footer-info-single">
+	<h2 class="title">Help Center</h2>
+	<ul class="list-unstyled">
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> How to Pay</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> FAQ's</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Sitemap</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Delivery Info</a></li>
+	</ul>
+</div>
+</div>
+
+<div class="col-md-3 col-sm-6">
+<div class="footer-info-single">
+	<h2 class="title">Customer information</h2>
+	<ul class="list-unstyled">
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> About Us</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> FAQ's</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Sell Your Items</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> RSS</a></li>
+	</ul>
+</div>
+</div>
+
+<div class="col-md-3 col-sm-6">
+<div class="footer-info-single">
+	<h2 class="title">Security & privacy</h2>
+	<ul class="list-unstyled">
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Terms Of Use</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Privacy Policy</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Return / Refund Policy</a></li>
+		<li><a href="http://www.nextbootstrap.com/" title=""><i class="fa fa-angle-double-right"></i> Store Locations</a></li>
+	</ul>
+</div>
+</div>
+
+<div class="col-md-3 col-sm-6">
+<div class="footer-info-single">
+	<h2 class="title">Payment</h2>
+	<p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive</p>
+	
+</div>
+-->
+</div>
+</div>
+</div>
 
 
+</footer>
+<script>
+    $('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+
+</script>
 </html>
